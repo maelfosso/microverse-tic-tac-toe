@@ -8,11 +8,11 @@ module TicTacToe
     end
 
     def get_value_at(x, y)
-      return @grid[x][y]
+      return grid[x][y]
     end
 
     def set_value_at(x, y, value)
-      @grid[x][y].value = value
+      grid[x][y].value = value
     end
 
     def game_over
@@ -24,7 +24,7 @@ module TicTacToe
     private
 
     def draw?
-      return false if @grid.flatten.map { |cell| cell.value }.none_empty?
+      return false if grid.flatten.map { |cell| cell.value }.none_empty?
     end
 
     def winner?
@@ -37,7 +37,7 @@ module TicTacToe
     end
 
     def winning_positions
-      @grid + @grid.transpose + [[@grid[0][0], @grid[1][1], @grid[2][2]] + [@grid[2][0], @grid[1][1] + @grid[0][2]]]
+      grid + grid.transpose + [[grid[0][0], grid[1][1], grid[2][2]] + [grid[2][0], grid[1][1] + grid[0][2]]]
     end
 
   end
