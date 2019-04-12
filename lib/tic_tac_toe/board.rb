@@ -21,6 +21,12 @@ module TicTacToe
       false
     end
 
+    def display_grid
+      grid.each do |row|
+        puts row.map { |cell| cell.value.empty? ? " " : cell.value }.join(" ")
+      end
+    end
+
     private
 
     def draw?
@@ -28,10 +34,11 @@ module TicTacToe
     end
 
     def winner?
-      winning_positions.each |winning_position|
+      winning_positions.each  do |winning_position|
         next if winning_position.map { |cell| cell.value }.all_empty?
+
         return true if winning_position.map { |cell| cell.value }.all_equal?
-      do
+      end
 
       return false
     end
