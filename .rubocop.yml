@@ -1,0 +1,3 @@
+inherit_from: .rubocop_todo.yml
+
+# rubocop:disable Metrics/AbcSize, Naming/UncommunicativeMethodParamName, Metrics/LineLength, Metrics/MethodLength, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity, Style/GuardClause
