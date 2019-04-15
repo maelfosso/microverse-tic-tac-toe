@@ -1,4 +1,5 @@
 module TicTacToe
+  # This class is for initilizing the Cell object
   class Cell
     attr_accessor :value
     def initialize(value = '')

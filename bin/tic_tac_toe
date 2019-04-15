@@ -1,23 +1,25 @@
 #!/usr/bin/env ruby
 
-require 'tic_tac_toe'
+# require 'tic_tac_toe'
+root = File.expand_path('../', File.dirname(__FILE__))
+require "#{root}/lib/tic_tac_toe.rb"
 
 class Instruct
-    puts "Welcome to tic tac toe"
-    
-    puts "Player one enter your name: "
-    player_one = gets.chomp
-    player_one = {color: "X", name: player_one}
-    
-    puts "Player two enter your name: "
-    player_two = gets.chomp
-    player_two = {color: "O", name: player_two}
-    
-    player_one = TicTacToe::Player.new(player_one)
-    player_two = TicTacToe::Player.new(player_two)
-    players = [player_one, player_two]
-    
-    TicTacToe::Game.new(players).play
+  puts 'Welcome to tic tac toe'
+
+  puts 'Player one enter your name: '
+  player_one = gets.chomp
+  player_one = { color: 'X', name: player_one }
+
+  puts 'Player two enter your name: '
+  player_two = gets.chomp
+  player_two = { color: 'O', name: player_two }
+
+  player_one = TicTacToe::Player.new(player_one)
+  player_two = TicTacToe::Player.new(player_two)
+  players = [player_one, player_two]
+
+  TicTacToe::Game.new(players).play
 end
 
 Instruct.new
