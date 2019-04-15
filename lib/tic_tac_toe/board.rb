@@ -3,9 +3,13 @@ module TicTacToe
   class Board
     attr_reader :grid
 
-    def initialize()
-      @grid = Array.new(3) { Array.new { Cell.new } }
+    def initialize(input = {})
+      @grid = input.fetch(:grid, default_grid)
     end
+
+#    def initialize()
+ #     @grid = Array.new(3) { Array.new { Cell.new } }
+  #  end
 
     def get_value_at(x, y)
       return grid[x][y]
@@ -23,11 +27,15 @@ module TicTacToe
 
     def display_grid
       grid.each do |row|
-        puts row.map { |cell| cell.value.empty? ? " " : cell.value }.join(" ")
+        puts row.map { |cell| cell.value.empty? ? "_" : cell.value }.join(" ")
       end
     end
 
     private
+    def default_grid
+      Array.new(3) { Array.new(3) { Cell.new } }
+    end
+
 
     def draw?
       return false if grid.flatten.map { |cell| cell.value }.none_empty?
@@ -44,7 +52,7 @@ module TicTacToe
     end
 
     def winning_positions
-      grid + grid.transpose + [[grid[0][0], grid[1][1], grid[2][2]] + [grid[2][0], grid[1][1] + grid[0][2]]]
+      grid + grid.transpose + [[grid[0][0], grid[1][1], grid[2][2]] + [grid[2][0], grid[1][1], grid[0][2]]]
     end
 
   end

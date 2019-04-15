@@ -20,8 +20,8 @@ class Instruct
     TicTacToe::Game.new(players).play
 end
 
-ct = Instruct.new
-ct.initial_instruction
+Instruct.new
+# ct.initial_instruction
 
 # puts "Welcome to tic tac toe"
 
