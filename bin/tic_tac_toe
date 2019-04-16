@@ -1,42 +1,19 @@
 #!/usr/bin/env ruby
 
-root = File.expand_path("../", File.dirname(__FILE__))
-require "#{root}/lib/tic_tac_toe.rb"
+require_relative "../lib/tic_tac_toe.rb"
 
+puts "Welcome to tic tac toe"
 
-class Instruct
-    puts "Welcome to tic tac toe"
+puts "Player one enter your name: "
+player_one = gets.chomp
+player_one = {color: "X", name: player_one}
 
-    puts "Player one enter your name: "
-    player_one = gets.chomp
-    player_one = {color: "X", name: player_one}
+puts "Player two enter your name: "
+player_two = gets.chomp
+player_two = {color: "O", name: player_two}
 
-    puts "Player two enter your name: "
-    player_two = gets.chomp
-    player_two = {color: "O", name: player_two}
+player_one = TicTacToe::Player.new(player_one)
+player_two = TicTacToe::Player.new(player_two)
+players = [player_one, player_two]
 
-    player_one = TicTacToe::Player.new(player_one)
-    player_two = TicTacToe::Player.new(player_two)
-    players = [player_one, player_two]
-
-    TicTacToe::Game.new(players).play
-end
-
-Instruct.new
-# ct.initial_instruction
-
-# puts "Welcome to tic tac toe"
-
-# puts "Player one enter your name: "
-# player_one = gets.chomp
-# player_one = {color: "X", name: player_one}
-
-# puts "Player two enter your name: "
-# player_two = gets.chomp
-# player_two = {color: "O", name: player_two}
-
-# player_one = TicTacToe::Player.new(player_one)
-# player_two = TicTacToe::Player.new(player_two)
-# players = [player_one, player_two]
-
-# TicTacToe::Game.new(players).play
+TicTacToe::Game.new(players).play

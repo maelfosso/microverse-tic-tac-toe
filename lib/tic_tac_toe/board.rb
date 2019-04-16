@@ -1,15 +1,11 @@
 module TicTacToe
-  # This class is for initilizing the Board object
+
   class Board
     attr_reader :grid
 
     def initialize(input = {})
       @grid = input.fetch(:grid, default_grid)
     end
-
-    #    def initialize()
-    #     @grid = Array.new(3) { Array.new { Cell.new } }
-    #  end
 
     def get_value_at(x, y)
       grid[x][y]
