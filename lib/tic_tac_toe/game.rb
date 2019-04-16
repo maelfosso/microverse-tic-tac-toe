@@ -39,14 +39,6 @@ module TicTacToe
       return 'Draw Game !!!' if board.game_over == :draw
     end
 
-    def self.welcome
-      puts 'Welcome to the Tic Tac Toe Game'
-      puts 'Indicate the cell where you play by using this reference'
-      [[1, 2, 3], [4, 5, 6], [7, 8, 9]].each do |row|
-        puts row.map { |n| n }.join(' ')
-      end
-    end
-
     def play
       puts "#{current_player.name} is the first one to start !"
 
