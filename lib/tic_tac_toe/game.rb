@@ -1,12 +1,13 @@
 module TicTacToe
 # This class is for initilizing the game object
   class Game
-    attr_reader :players, :board, :current_player, :other_player
+    attr_reader :players, :board, :current_player, :other_player, :move_available
 
     def initialize(players, board = Board.new)
       @players = players
       @board = board
       @current_player, @other_player = players.shuffle
+      @move_available = [*1..9]
     end
 
     def switch_players
@@ -14,10 +15,10 @@ module TicTacToe
     end
 
     def please_move
-      "#{current_player.name} : Enter a number between 1 to 9 indicating where you want to play"
+      "#{current_player.name} : Enter a number between those numbers [#{move_available.join(", ")}] indicating where you want to play"
     end
 
-    def get_move_played(move = gets.chomp)
+    def get_move_played(move)
       mapping = {
         '1' => [0, 0],
         '2' => [0, 1],
@@ -38,14 +39,6 @@ module TicTacToe
       return 'Draw Game !!!' if board.game_over == :draw
     end
 
-    def self.welcome
-      puts 'Welcome to the Tic Tac Toe Game'
-      puts 'Indicate the cell where you play by using this reference'
-      [[1, 2, 3], [4, 5, 6], [7, 8, 9]].each do |row|
-        puts row.map { |n| n }.join(' ')
-      end
-    end
-
     def play
       puts "#{current_player.name} is the first one to start !"
 
@@ -53,7 +46,16 @@ module TicTacToe
         board.display_grid
         puts ''
         puts please_move
-        x, y = get_move_played
+
+        move = gets.chomp
+        while(!move_available.include?(move.to_i)) do
+          puts please_move
+          move = gets.chomp
+        end
+        move_available.delete_at(move_available.index(move.to_i))
+
+        puts "We get the move played"
+        x, y = get_move_played(move)
         board.set_value_at(x, y, current_player.color)
 
         if board.game_over
